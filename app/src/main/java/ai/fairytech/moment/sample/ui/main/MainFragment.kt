@@ -18,34 +18,24 @@
 
 package ai.fairytech.moment.sample.ui.main
 
-import ai.fairytech.moment.MomentSDK
-import ai.fairytech.moment.exception.MomentException
-import ai.fairytech.moment.sample.MyApplication
 import ai.fairytech.moment.sample.databinding.FragmentMainBinding
+import ai.fairytech.moment.sample.ui.cashback.CashbackActivity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 /**
  * 앱 시작시 구동되는 첫 Fragment.
  * 기능:
- *  - Cashback web 로드
+ *  - Cashback web 로드 버튼 제공
  */
 open class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     protected val binding get() = _binding!!
-
-    protected lateinit var moment: MomentSDK
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        moment = MomentSDK.getInstance(requireContext().applicationContext)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,49 +50,11 @@ open class MainFragment : Fragment() {
         _binding = null
     }
 
-    private fun loadCashbackWeb() {
-        requireContext().let {
-            val momentSdk = (it.applicationContext as MyApplication).momentSdk
-            val momentSdkConfig = (it.applicationContext as MyApplication).momentSdkConfig
-            momentSdk.setUserId("test-user-id", object : MomentSDK.ResultCallback {
-                override fun onSuccess() {
-                    momentSdk.launchUI(
-                        momentSdkConfig,
-                        object : MomentSDK.ResultCallback {
-                            override fun onSuccess() {
-                                // pass
-                            }
-
-                            override fun onFailure(exception: MomentException) {
-                                Toast.makeText(
-                                    it,
-                                    "Cashback web 로드에 실패했습니다.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                Log.e(
-                                    "MomentSDK",
-                                    "loadCashbackWeb onFailure(${exception.errorCode.name}): ${exception.message}"
-                                )
-                            }
-                        }
-                    )
-                }
-
-                override fun onFailure(exception: MomentException) {
-                    Toast.makeText(it, "userId 설정에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                    Log.e(
-                        "MomentSDK",
-                        "loadCashbackWeb onFailure(${exception.errorCode.name}): ${exception.message}"
-                    )
-                }
-            })
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnCashbackWeb.setOnClickListener {
-            loadCashbackWeb()
+            val intent = Intent(requireContext(), CashbackActivity::class.java)
+            startActivity(intent)
         }
     }
 }

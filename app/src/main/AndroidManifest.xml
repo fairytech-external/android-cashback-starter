@@ -33,6 +33,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Poc">
 
+        <!-- Deeplink 설정 -->
+        <activity
+            android:name=".ui.cashback.CashbackActivity"
+            android:exported="true">
+
+            <!-- Custom Scheme -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- TODO: Replace scheme and host to yours -->
+                <data
+                    android:scheme="your_custom_scheme"
+                    android:host="your_custom_host"/>
+            </intent-filter>
+
+            <!-- App links -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- TODO: Replace host to yours -->
+                <data android:scheme="https" />
+                <data android:host="your_domain" />
+            </intent-filter>
+        </activity>
+
         <!-- TODO: Replace PROJECT_ID and SDK_API_KEY -->
         <meta-data
             android:name="ai.fairytech.moment.PROJECT_ID"
