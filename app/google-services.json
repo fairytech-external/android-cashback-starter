@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760729863789",
+    "project_id": "moment-canary",
+    "storage_bucket": "moment-canary.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760729863789:android:c6de169fa66dd8c066a164",
+        "android_client_info": {
+          "package_name": "ai.fairytech.moment.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760729863789-o2hc02fqkeiu96h2n3efcompnali1euf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhfjXmTJmNsv4MwpUORI-gR47lokP85i4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760729863789-o2hc02fqkeiu96h2n3efcompnali1euf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

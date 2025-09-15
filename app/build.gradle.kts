@@ -3,6 +3,7 @@ import io.netty.util.internal.UnstableApi
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 @Suppress("UnstableApiUsage")
@@ -12,8 +13,8 @@ android {
     defaultConfig {
         applicationId = "ai.fairytech.moment.sample"
         minSdk = 24
-        compileSdk = 34
-        targetSdk = 34
+        compileSdk = 35
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -47,8 +48,9 @@ android {
 
 dependencies {
     // Uncomment one of the following lines to include the Moment SDK.
-    implementation("ai.fairytech:moment-x:1.1.0")
-//    implementation("ai.fairytech:moment-x-no-fg:1.1.0")
+    implementation("ai.fairytech:moment-x-push:1.2.3")
+//    implementation("ai.fairytech:moment-x:1.2.3")
+//    implementation("ai.fairytech:moment-x-no-fg:1.2.3")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.0")
     implementation("com.google.android.material:material:1.8.0")
@@ -59,6 +61,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation("com.google.firebase:firebase-messaging-ktx:23.0.0")
 
     // Test
     testImplementation("junit:junit:4.13.2")
